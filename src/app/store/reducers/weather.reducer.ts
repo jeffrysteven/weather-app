@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { City, WeatherForecastResponse } from 'src/app/models/city';
+import { City, WeatherForecastResponse } from '../../models/city';
 import {
   GetCitiesWeather,
   GetCitiesWeatherFailure,

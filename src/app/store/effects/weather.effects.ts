@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, concatMap, map, take } from 'rxjs/operators';
-import { City, WeatherForecastResponse } from 'src/app/models/city';
-import { WeatherService } from 'src/app/services/weather.service';
+import { City, WeatherForecastResponse } from '../../models/city';
+import { WeatherService } from '../../services/weather.service';
 import {
   GetCitiesWeather,
   GetCitiesWeatherFailure,

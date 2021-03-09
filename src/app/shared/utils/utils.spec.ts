@@ -1,4 +1,3 @@
-import { City } from 'src/app/models/city';
 import { buildCityObject, buildHttpParams, getIconUrl } from './utils';
 
 describe('Utils', () => {

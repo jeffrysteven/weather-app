@@ -8,14 +8,15 @@
   >
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <div *ngIf="forecast$ | async as forecast">
-    <div id="forecast-data">
+  <div *ngIf="forecast$ | async as forecast" class="container">
+    <div id="forecast-data" class="row">
       <weather-stacked-area-chart
         title="Wind in {{ forecast.city.name }}, {{ forecast.city.country }}"
         [categories]="winds?.categories"
         yTitle="Winds (m/s)"
         [xTitle]="forecast.city.name"
         [data]="winds?.data"
+        class="col-lg-5 col-sm-12"
       ></weather-stacked-area-chart>
       <weather-stacked-area-chart
         title="Temperature in {{ forecast.city.name }}, {{
@@ -25,16 +26,16 @@
         yTitle="Temperature (°C)"
         [xTitle]="forecast.city.name"
         [data]="temperatures?.data"
+        class="col-lg-5 col-sm-12"
       ></weather-stacked-area-chart>
     </div>
-    <div id="forecast-detail">
-      <table>
+    <div id="forecast-detail" class="container">
+      <table class="table table-hover">
         <thead>
           <th></th>
           <th>Date</th>
           <th>Temperature</th>
-          <th>Max Temperature</th>
-          <th>Min Temperature</th>
+          <th>Max/Min Temperature</th>
           <th>Winds</th>
           <th>Humidity</th>
         </thead>
@@ -48,11 +49,13 @@
               />
             </td>
             <td>{{ forecastDetail.dt_txt }}</td>
-            <td>{{ forecastDetail.main.temp }}</td>
-            <td>{{ forecastDetail.main.temp_max }}</td>
-            <td>{{ forecastDetail.main.temp_min }}</td>
-            <td>{{ forecastDetail.main.humidity }}</td>
-            <td>{{ forecastDetail.wind.speed }}</td>
+            <td>{{ forecastDetail.main.temp | number: "1.0-0" }}&#176;</td>
+            <td>
+              {{ forecastDetail.main.temp_max }}&#176; /
+              {{ forecastDetail.main.temp_min }}&#176;
+            </td>
+            <td>{{ forecastDetail.wind.speed }} m/s</td>
+            <td>{{ forecastDetail.main.humidity }}%</td>
           </tr>
         </tbody>
       </table>

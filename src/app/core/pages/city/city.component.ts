@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GetCityForecast } from 'src/app/store/actions/weather.actions';
+import { GetCityForecast } from '../../../store/actions/weather.actions';
 import { City, WeatherForecastResponse } from '../../../models/city';
 import { State } from '../../../store/reducers/weather.reducer';
 import {
@@ -22,6 +22,12 @@ export class CityComponent implements OnInit {
   winds: { categories: string[]; data: number[] };
   temperatures: { categories: string[]; data: number[] };
 
+  /**
+   * Creates an instance of CityComponent.
+   * @param {Store<State>} store
+   * @param {ActivatedRoute} route
+   * @memberof CityComponent
+   */
   constructor(private store: Store<State>, private route: ActivatedRoute) {
     this.forecast$ = this.store.pipe(
       select(selectCityForecast),
@@ -42,6 +48,12 @@ export class CityComponent implements OnInit {
     });
   }
 
+  /**
+   * Build data for wind chart.
+   *
+   * @param {WeatherForecastResponse} { list }
+   * @memberof CityComponent
+   */
   buildWindData({ list }: WeatherForecastResponse): void {
     this.winds = list.reduce(
       (obj, { wind: { speed }, dt_txt }: City) => {
@@ -53,11 +65,17 @@ export class CityComponent implements OnInit {
     );
   }
 
+  /**
+   * Build data for temperature chart.
+   *
+   * @param {WeatherForecastResponse} { list }
+   * @memberof CityComponent
+   */
   buildTemperatureData({ list }: WeatherForecastResponse): void {
     this.temperatures = list.reduce(
       (obj, { main: { temp }, dt_txt }: City) => {
         obj['categories'] = [...obj['categories'], dt_txt];
-        obj['data'] = [...obj['data'], temp];
+        obj['data'] = [...obj['data'], Math.round(temp)];
         return obj;
       },
       { categories: [], data: [] }
