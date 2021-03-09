@@ -1,0 +1,12 @@
+<section id="cities-list">
+  <mat-spinner *ngIf="loading$ | async; else loaded"></mat-spinner>
+  <ng-template #loaded>
+    <div
+      *ngFor="let city of cities$ | async"
+      [routerLink]="city.id"
+      class="city-weather-card"
+    >
+      <weather-card [city]="city"></weather-card>
+    </div>
+  </ng-template>
+</section>

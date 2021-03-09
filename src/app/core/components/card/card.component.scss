@@ -1,0 +1,59 @@
+.flex {
+  display: flex;
+}
+.subtitle-font {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-stretch: 100%;
+  letter-spacing: normal;
+}
+#wind-icon {
+  color: #a7dfec;
+  font-size: 2rem;
+}
+#card-title {
+  @extend .flex;
+  align-items: center;
+  justify-content: space-between;
+  #city-name {
+    @extend .flex;
+    flex-direction: column;
+    #city-date {
+      @extend .subtitle-font;
+    }
+  }
+}
+#weather_content {
+  @extend .flex;
+  align-items: center;
+  justify-content: space-evenly;
+  #avg_temperature_container {
+    @extend .flex;
+    #temperature_value {
+      font-size: 6em;
+      font-weight: 100;
+    }
+    #temperature_degree {
+      font-size: 2em;
+      font-weight: 100;
+    }
+  }
+  .weather-icon {
+    width: 50%;
+  }
+}
+#weather-additional-data {
+  @extend .flex;
+  justify-content: space-around;
+  align-items: center;
+  #wind {
+    @extend .flex;
+    flex-direction: column;
+    align-items: center;
+    #wind-value {
+      @extend .subtitle-font;
+      font-size: 0.75rem;
+    }
+  }
+}

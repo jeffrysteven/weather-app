@@ -1,0 +1,19 @@
+.flex {
+  display: flex;
+}
+
+#forecast-data {
+  @extend .flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#forecast-detail {
+  @extend .flex;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: space-around;
+  .weather-icon {
+    width: 50%;
+  }
+}

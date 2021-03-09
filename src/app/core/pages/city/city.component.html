@@ -1,0 +1,61 @@
+<mat-spinner *ngIf="loading$ | async; else loaded"></mat-spinner>
+<ng-template #loaded>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    routerLink="/"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <div *ngIf="forecast$ | async as forecast">
+    <div id="forecast-data">
+      <weather-stacked-area-chart
+        title="Wind in {{ forecast.city.name }}, {{ forecast.city.country }}"
+        [categories]="winds?.categories"
+        yTitle="Winds (m/s)"
+        [xTitle]="forecast.city.name"
+        [data]="winds?.data"
+      ></weather-stacked-area-chart>
+      <weather-stacked-area-chart
+        title="Temperature in {{ forecast.city.name }}, {{
+          forecast.city.country
+        }}"
+        [categories]="temperatures?.categories"
+        yTitle="Temperature (°C)"
+        [xTitle]="forecast.city.name"
+        [data]="temperatures?.data"
+      ></weather-stacked-area-chart>
+    </div>
+    <div id="forecast-detail">
+      <table>
+        <thead>
+          <th></th>
+          <th>Date</th>
+          <th>Temperature</th>
+          <th>Max Temperature</th>
+          <th>Min Temperature</th>
+          <th>Winds</th>
+          <th>Humidity</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let forecastDetail of forecast.list">
+            <td>
+              <img
+                [src]="forecastDetail.weather[0].icon | weatherIcon: 'small'"
+                alt="Weather Icon"
+                class="weather-icon"
+              />
+            </td>
+            <td>{{ forecastDetail.dt_txt }}</td>
+            <td>{{ forecastDetail.main.temp }}</td>
+            <td>{{ forecastDetail.main.temp_max }}</td>
+            <td>{{ forecastDetail.main.temp_min }}</td>
+            <td>{{ forecastDetail.main.humidity }}</td>
+            <td>{{ forecastDetail.wind.speed }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>
