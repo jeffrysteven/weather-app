@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { initialState } from '../../../store/reducers/weather.reducer';
 
 import { CityComponent } from './city.component';
 
@@ -8,9 +11,13 @@ describe('CityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CityComponent ]
-    })
-    .compileComponents();
+      declarations: [CityComponent],
+      imports: [RouterTestingModule],
+      providers: [
+        provideMockStore({ initialState: { weather: { ...initialState } } }),
+        RouterTestingModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -18,8 +18,3 @@ export const selectLoading = createSelector(
   selectState,
   ({ loading }: State) => loading
 );
-
-export const selectError = createSelector(
-  selectState,
-  ({ error }: State) => error
-);

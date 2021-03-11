@@ -2,6 +2,8 @@ import * as fromCity from './weather.actions';
 
 describe('loadCities', () => {
   it('should return an action', () => {
-    expect(fromCity.loadCitiesWeather().type).toBe('[City] Load Citys');
+    expect(fromCity.GetCitiesWeather().type).toBe(
+      fromCity.CitiesWeatherActionTypes.GET_CITIES_WEATHER
+    );
   });
 });

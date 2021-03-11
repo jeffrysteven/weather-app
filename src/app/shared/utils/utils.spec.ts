@@ -64,6 +64,7 @@ describe('Utils', () => {
       weather: city.weather,
       wind: city.wind,
       dt_txt: undefined,
+      dt: 1615208982,
     });
   });
 });

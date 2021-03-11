@@ -5,7 +5,7 @@ import { getIconUrl } from '../utils/utils';
   name: 'weatherIcon',
 })
 export class WeatherIconPipe implements PipeTransform {
-  transform(value: string, size: 'small' | 'large'): unknown {
+  transform(value: string, size: 'small' | 'large' = 'large'): unknown {
     return getIconUrl(value, size);
   }
 }

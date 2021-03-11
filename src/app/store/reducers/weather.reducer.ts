@@ -19,7 +19,13 @@ export interface State {
 
 export const initialState: State = {
   cities: [],
-  forecast: null,
+  forecast: {
+    city: {
+      name: null,
+    },
+    cnt: null,
+    list: [],
+  },
   loading: false,
   error: null,
 };
