@@ -1,4 +1,10 @@
-import { browser, logging } from 'protractor';
+import {
+  browser,
+  by,
+  ElementFinder,
+  logging,
+  ExpectedConditions,
+} from 'protractor';
 import { AppPage } from './app.po';
 
 describe('workspace-project App', () => {
@@ -8,16 +14,56 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', async () => {
+  it('should render header', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('weather app is running!');
+    expect(page.getElementBySelector('header').isPresent()).toBeTruthy();
+    expect(await page.getElementBySelector('header').getText()).toEqual(
+      'Weather App'
+    );
+  });
+
+  it('should render cities container', async () => {
+    expect(
+      await page.getElementBySelector('cities-list').isDisplayed()
+    ).toBeTruthy();
+  });
+
+  it('should render 5 cities', async () => {
+    const cityNames = ['Madrid', 'Amsterdam', 'Paris', 'London', 'Brussels'];
+    const cityCards = await page.getCityCards();
+    expect(await cityCards.length).toEqual(5);
+    for (let i = 0; i < cityNames.length; i++) {
+      const cityName = cityNames[i];
+      const cityCard: ElementFinder = await page.getCityCards().get(i);
+      expect(
+        await cityCard.element(by.css('[data-ui="city-title"]')).getText()
+      ).toContain(cityName);
+    }
+  });
+
+  it('should get city forecast in the forecast page', async () => {
+    await page.navigateToForecast();
+    expect(
+      page.getElementBySelector('charts-container').isPresent()
+    ).toBeTruthy();
+    expect(
+      page.getElementBySelector('city-winds-chart').isPresent()
+    ).toBeTruthy();
+    expect(
+      page.getElementBySelector('city-winds-temperature').isPresent()
+    ).toBeTruthy();
+    expect(
+      page.getElementBySelector('city-table-forecast').isPresent()
+    ).toBeTruthy();
   });
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+    expect(logs).not.toContain(
+      jasmine.objectContaining({
+        level: logging.Level.SEVERE,
+      } as logging.Entry)
+    );
   });
 });

@@ -2,11 +2,12 @@
   *ngIf="loading$ | async; else loaded"
 ></weather-loading-indicator>
 <ng-template #loaded>
-  <section class="row">
+  <section class="row" data-ui="cities-list">
     <div
-      *ngFor="let city of cities$ | async"
+      *ngFor="let city of cities$ | async; index as i"
       [routerLink]="city.id"
       class="city-weather-card col"
+      data-ui="city-card"
     >
       <weather-card [city]="city"></weather-card>
     </div>

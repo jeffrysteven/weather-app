@@ -11,7 +11,7 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
   <div *ngIf="forecast$ | async as forecast" class="forecast-info-container">
-    <div class="row charts">
+    <div class="row charts" data-ui="charts-container">
       <weather-stacked-area-chart
         title="Wind in {{ forecast.city.name }}, {{ forecast.city.country }}"
         [categories]="winds?.categories"
@@ -19,6 +19,7 @@
         [xTitle]="forecast.city.name"
         [data]="winds?.data"
         class="col-md-5 col-12"
+        data-ui="city-winds-chart"
       ></weather-stacked-area-chart>
       <weather-stacked-area-chart
         title="Temperature in {{ forecast.city.name }}, {{
@@ -29,9 +30,10 @@
         [xTitle]="forecast.city.name"
         [data]="temperatures?.data"
         class="col-md-5 col-12"
+        data-ui="city-winds-temperature"
       ></weather-stacked-area-chart>
     </div>
-    <div class="forecast-detail table-responsive">
+    <div class="forecast-detail table-responsive" data-ui="city-table-forecast">
       <table class="table table-hover">
         <thead>
           <th></th>
