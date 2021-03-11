@@ -1,4 +1,6 @@
-<mat-spinner *ngIf="loading$ | async; else loaded"></mat-spinner>
+<weather-loading-indicator
+  *ngIf="loading$ | async; else loaded"
+></weather-loading-indicator>
 <ng-template #loaded>
   <button
     mat-icon-button
@@ -8,15 +10,15 @@
   >
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <div *ngIf="forecast$ | async as forecast" class="container">
-    <div id="forecast-data" class="row">
+  <div *ngIf="forecast$ | async as forecast" class="forecast-info-container">
+    <div class="row charts">
       <weather-stacked-area-chart
         title="Wind in {{ forecast.city.name }}, {{ forecast.city.country }}"
         [categories]="winds?.categories"
         yTitle="Winds (m/s)"
         [xTitle]="forecast.city.name"
         [data]="winds?.data"
-        class="col-lg-5 col-sm-12"
+        class="col-md-5 col-12"
       ></weather-stacked-area-chart>
       <weather-stacked-area-chart
         title="Temperature in {{ forecast.city.name }}, {{
@@ -26,10 +28,10 @@
         yTitle="Temperature (°C)"
         [xTitle]="forecast.city.name"
         [data]="temperatures?.data"
-        class="col-lg-5 col-sm-12"
+        class="col-md-5 col-12"
       ></weather-stacked-area-chart>
     </div>
-    <div id="forecast-detail" class="container">
+    <div class="forecast-detail table-responsive">
       <table class="table table-hover">
         <thead>
           <th></th>
@@ -48,7 +50,9 @@
                 class="weather-icon"
               />
             </td>
-            <td>{{ forecastDetail.dt_txt }}</td>
+            <td>
+              {{ forecastDetail.dt_txt | date: "EEEE, MMMM d, y, h:mm a" }}
+            </td>
             <td>{{ forecastDetail.main.temp | number: "1.0-0" }}&#176;</td>
             <td>
               {{ forecastDetail.main.temp_max }}&#176; /

@@ -1,19 +1,19 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title id="card-title">
-      <div id="city-name">
+    <mat-card-title class="card-title">
+      <div class="city-name">
         {{ city.name }}
-        <span id="city-date">{{ city.dt * 1000 | date: "fullDate" }}</span>
+        <span class="city-date">{{ city.dt * 1000 | date: "fullDate" }}</span>
       </div>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div id="weather_content">
-      <div id="avg_temperature_container">
-        <span id="temperature_value">{{
+    <div class="weather_content">
+      <div class="avg_temperature_container">
+        <span class="temperature_value">{{
           city.main.temp | number: "1.0-0"
         }}</span>
-        <span id="temperature_degree">&#176;C</span>
+        <span class="temperature_degree">&#176;C</span>
       </div>
       <img
         [src]="city.weather[0].icon | weatherIcon"
@@ -21,8 +21,8 @@
         class="weather-icon"
       />
     </div>
-    <div id="weather-additional-data">
-      <div id="min-max-temperature">
+    <div class="weather-additional-data">
+      <div class="min-max-temperature">
         <span class="subtitle-font"
           >{{ city.main.temp_max | number: "1.0-0" }}&#176;</span
         >
@@ -31,9 +31,9 @@
           >{{ city.main.temp_min | number: "1.0-0" }}&#176;</span
         >
       </div>
-      <div id="wind">
-        <fa-icon [icon]="icons.faWind" id="wind-icon"></fa-icon>
-        <span id="wind-value"
+      <div class="wind">
+        <fa-icon [icon]="icons.faWind" class="wind-icon"></fa-icon>
+        <span class="wind-value"
           >{{ city.wind.speed | number: "1.0-0" }} m/s Winds</span
         >
       </div>

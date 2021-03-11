@@ -1,22 +1,24 @@
 .flex {
   display: flex;
 }
-
-#forecast-data {
-  @extend .flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-#forecast-detail {
-  @extend .flex;
-  margin-top: 2rem;
-  align-items: center;
-  justify-content: space-around;
-  .weather-icon {
-    width: 25%;
+.forecast-info-container {
+  padding: 0 10rem 0 10rem;
+  @media (max-width: 576px) {
+    padding: 0 0.75rem 0 0.75rem;
   }
-  td {
-    text-align: center;
+  .charts {
+    justify-content: space-around;
+    * {
+      padding: 0;
+    }
+  }
+  .forecast-detail {
+    margin-top: 2rem;
+    .weather-icon {
+      width: 25%;
+    }
+    td {
+      text-align: center;
+    }
   }
 }

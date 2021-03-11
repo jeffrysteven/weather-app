@@ -14,6 +14,6 @@ export interface City extends Base {
   name: string;
   weather: Weather[];
   wind: Wind;
-  dt_txt?: number;
+  dt_txt?: string;
   dt?: number;
 }

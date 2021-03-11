@@ -6,6 +6,7 @@ import { CardComponent } from './components/card/card.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CityComponent } from './pages/city/city.component';
 import { StackedAreaChartComponent } from './components/stacked-area-chart/stacked-area-chart.component';
+import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { StackedAreaChartComponent } from './components/stacked-area-chart/stack
     HomeComponent,
     CityComponent,
     StackedAreaChartComponent,
+    LoadingIndicatorComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [

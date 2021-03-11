@@ -17,6 +17,7 @@ export class StackedAreaChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.chartOptions = {
+      scrollbar: { enabled: true },
       title: {
         text: this.title,
       },
@@ -33,6 +34,15 @@ export class StackedAreaChartComponent implements OnInit {
           data: this.data,
         },
       ],
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 200,
+            },
+          },
+        ],
+      },
     };
   }
 }
