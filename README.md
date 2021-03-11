@@ -1,6 +1,8 @@
 [Live version](https://jeffrysteven.github.io/weather-app/)
 
 # Architecture overview
+![image](https://user-images.githubusercontent.com/1964344/110857314-b7741a00-8286-11eb-935b-803effc17903.png)
+
 
 # Libs
 
