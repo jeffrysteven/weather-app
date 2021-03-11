@@ -42,9 +42,7 @@ export class CityComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(({ id }) => {
-      if (id) {
-        this.store.dispatch(GetCityForecast({ id }));
-      }
+      this.store.dispatch(GetCityForecast({ id }));
     });
   }
 

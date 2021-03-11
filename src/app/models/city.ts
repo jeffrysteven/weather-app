@@ -4,9 +4,9 @@ import { Weather } from './weather';
 import { Wind } from './wind';
 
 export interface WeatherForecastResponse {
-  city: { name: string };
   cnt: number;
   list: City[];
+  city?: { name: string };
 }
 
 export interface City extends Base {

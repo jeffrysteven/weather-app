@@ -2,8 +2,12 @@ import { WeatherIconPipe } from './weather-icon.pipe';
 
 describe('WeatherIconPipe', () => {
   let pipe: WeatherIconPipe;
-  it('create an instance', () => {
+
+  beforeEach(() => {
     pipe = new WeatherIconPipe();
+  });
+
+  it('create an instance', () => {
     expect(pipe).toBeTruthy();
   });
 
