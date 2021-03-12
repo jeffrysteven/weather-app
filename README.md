@@ -6,6 +6,18 @@
 
 ## Modules
 
+**App Module**
+
+![image](https://user-images.githubusercontent.com/1964344/110873403-ab488680-829f-11eb-915a-70b3ae4c61b3.png)
+
+**Core Module**
+
+![image](https://user-images.githubusercontent.com/1964344/110873451-c6b39180-829f-11eb-8bc0-7a9a0a290b21.png)
+
+**Shared Module**
+
+![image](https://user-images.githubusercontent.com/1964344/110873495-ddf27f00-829f-11eb-8c16-63d38e45dfb0.png)
+
 ## Libs
 
 NgRx, Angular Highcharts, Twitter Bootstrap, Angular Material, Angular Fontawesome
