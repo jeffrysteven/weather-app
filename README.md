@@ -1,21 +1,14 @@
+# Weather App
+
 [Live version](https://jeffrysteven.github.io/weather-app/)
 
 # Architecture overview
-![image](https://user-images.githubusercontent.com/1964344/110857314-b7741a00-8286-11eb-935b-803effc17903.png)
 
+## Modules
 
-# Libs
+## Libs
 
 NgRx, Angular Highcharts, Twitter Bootstrap, Angular Material, Angular Fontawesome
-
-## Modules
-
-1. CoreModule
-2. SharedModule
-
-# Weather
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
 ## Development server
 
@@ -32,3 +25,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+--
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.

@@ -42,7 +42,8 @@ describe('workspace-project App', () => {
   });
 
   it('should get city forecast in the forecast page', async () => {
-    await page.navigateToForecast();
+    await page.getCityCards().get(0).click();
+    expect(browser.getCurrentUrl()).toContain('/3117735');
     expect(
       page.getElementBySelector('charts-container').isPresent()
     ).toBeTruthy();
